@@ -8,7 +8,7 @@ function App() {
   return (
     <>
      {/* 1. Accordian */}
-     <Accordian/>
+     {/* <Accordian/> */}
 
      {/* 2 Random Color Generator */}
      <RandomColor/>
