@@ -1,14 +1,14 @@
-import "./App.css";
-import Header from "./components/Header";
+import React from "react";
 import { useState } from "react";
+import "./style.css"
 
-function App() {
+const TodoList = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [data, setData] = useState([]);
 
   const addData = () => {
-    // initially we have empty arry, and with this function we are adding info in object, and keep the previous information in array. 
+    // initially we have empty arry, and with this function we are adding info in object, and keep the previous information in array.
     setData([...data, { name, email }]);
 
     // when the data is added empty both the fields.
@@ -19,11 +19,11 @@ function App() {
   const removeData = (i) => {
     let my_arr = data;
     // remove one object from index each time we click of button.
-    my_arr.splice(i, 1); 
-    
+    my_arr.splice(i, 1);
+
     //with spread operator we will be able to remove object one by one.
     // we set the array again in variable once an object of info is remove.
-    setData([...my_arr]); 
+    setData([...my_arr]);
   };
 
   // it also working fine
@@ -35,7 +35,6 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
       {/* form section */}
       <div className="form">
         <input
@@ -75,6 +74,6 @@ function App() {
       </div>
     </div>
   );
-}
+};
 
-export default App;
+export default TodoList;

@@ -1,18 +1,4 @@
-.App {
-    text-align: center;
-  }
-  
-  h1{
-    margin: 0;
-  }
-  
-  .header{
-    background-color: #192a56;
-    padding: 12px;
-    color: white;
-  }
-  
-  .form{
+.form{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,5 +26,3 @@
     box-shadow: rgba(25, 25, 25, 0.04) 0 0 1px 0, rgba(0, 0, 0, 0.1) 0 3px 4px 0;
   
   }
-  
-  
