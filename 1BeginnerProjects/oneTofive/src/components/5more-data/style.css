@@ -1,0 +1,40 @@
+.load-more-container {
+    display:  flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-container{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.product{
+    padding: 20px;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.product img{
+    width: 200px;
+    height: 200px;
+}
+
+.button-container{
+    display: block;
+    margin: 20px auto;
+}
+.button-container button{
+    background: lightcoral;
+    color: #fff;
+    border: 0;
+    outline: none;
+    padding: 20px 40px;
+    margin: 20px 0;
+    font-size: 17px;
+    border-radius: 30px;
+    cursor: pointer;
+}
