@@ -3,7 +3,7 @@ import TodoList from "./components/6todoList/TodoList";
 import TreeView from "./components/7treeView/TreeView";
 import Header from "./components/Header";
 import myData from "./components/7treeView/data";
-import QrCode from "./components/QrCode-generator/QrCode";
+import QrCode from "./components/8QrCode-generator/QrCode";
 
 function App() {
   
