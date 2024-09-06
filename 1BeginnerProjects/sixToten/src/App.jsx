@@ -4,6 +4,7 @@ import TreeView from "./components/7treeView/TreeView";
 import Header from "./components/Header";
 import myData from "./components/7treeView/data";
 import QrCode from "./components/8QrCode-generator/QrCode";
+import LightDark from "./components/9light-dark-theme/LightDark";
 
 function App() {
   
@@ -17,7 +18,10 @@ function App() {
       {/* <TreeView menuData={myData}/> */}
 
       {/* 8 Qr Code Generator */}
-      <QrCode/>
+      {/* <QrCode/> */}
+
+      {/* 9 Light and dark theme */}
+      <LightDark/>
 
       
     </div>
