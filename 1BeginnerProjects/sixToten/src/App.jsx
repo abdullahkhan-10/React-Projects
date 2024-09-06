@@ -3,6 +3,7 @@ import TodoList from "./components/6todoList/TodoList";
 import TreeView from "./components/7treeView/TreeView";
 import Header from "./components/Header";
 import myData from "./components/7treeView/data";
+import QrCode from "./components/QrCode-generator/QrCode";
 
 function App() {
   
@@ -13,7 +14,10 @@ function App() {
       {/* <TodoList/> */}
 
       {/* 7 treeView/ Menu UI/ Recursive navigation Menu  */}
-      <TreeView menuData={myData}/>
+      {/* <TreeView menuData={myData}/> */}
+
+      {/* 8 Qr Code Generator */}
+      <QrCode/>
 
       
     </div>
