@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import myData from "./components/7treeView/data";
 import QrCode from "./components/8QrCode-generator/QrCode";
 import LightDark from "./components/9light-dark-theme/LightDark";
+import ScrollIndicator from "./components/10scroll-indicator/ScrollIndicator";
 
 function App() {
   
@@ -21,7 +22,10 @@ function App() {
       {/* <QrCode/> */}
 
       {/* 9 Light and dark theme */}
-      <LightDark/>
+      {/* <LightDark/> */}
+
+      {/* 10 Scroll Indicator */}
+      <ScrollIndicator url={"https://dummyjson.com/products?limit=100"} />
 
       
     </div>
