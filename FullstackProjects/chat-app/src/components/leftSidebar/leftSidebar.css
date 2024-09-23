@@ -64,10 +64,9 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    pad: 10px 20px;
+    padding: 10px 20px;
     cursor: pointer;
     font-size: 13;
-    margin-bottom: 5px;
 }
 
 .friends img{
