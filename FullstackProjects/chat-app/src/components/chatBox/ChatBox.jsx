@@ -22,6 +22,15 @@ const ChatBox = () => {
           </div>
         </div>
 
+        {/* sender media files, images etc */}
+        <div className="sender-msg">
+          <img src={myAssets.pic1} className='media-img' />
+          <div>
+            <img src={myAssets.profile_img} alt="" />
+            <p>2:30 PM</p>
+          </div>
+        </div>
+
         {/* Reciever message  */}
         <div className="reciever-msg">
           <p className='msg'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit, vitae.</p>

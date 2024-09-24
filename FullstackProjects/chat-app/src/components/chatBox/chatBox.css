@@ -1,5 +1,5 @@
 .chat-box{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     height: 75vh;
     background-color: #f1f5ff;
     position: relative;
@@ -34,7 +34,7 @@
 
 /* User messages  */
 .user-msg{
-    border: 2px solid orange;
+    /* border: 2px solid orange; */
     height: calc(100% - 120px);
     display: flex;
     flex-direction: column-reverse;
@@ -79,6 +79,12 @@
 .sender-msg div, .reciever-msg div{
     text-align: center;
     font-size: 9px;
+}
+
+.media-img{
+    max-width: 230px;
+    margin-bottom: 30px;
+    border-radius: 10px;
 }
 
 
