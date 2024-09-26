@@ -2,6 +2,8 @@ import { app } from "./firebase";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth"
 import { getFirestore, setDoc, doc } from "firebase/firestore"
 
+import { toast } from "react-toastify";
+
 const auth = getAuth(app)
 const db = getFirestore()
 
@@ -29,5 +31,8 @@ const signUp = async(userName, email, password) =>{
 
     } catch (error) {
         console.error(error)
+        toast.error(error.code)
     }
 }
+
+export { signUp }
