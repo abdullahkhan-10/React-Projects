@@ -1,7 +1,12 @@
 import myAssets from "../../assets/assets"
 import "./rightSidebar.css"
 
+import { logOut } from "../../config/configuration"
+
+
+
 const RightSidebar = () => {
+  
   return (
     <div className='right-side'>
 
@@ -25,7 +30,7 @@ const RightSidebar = () => {
           <img src={myAssets.pic2} alt="" />
         </div>
       </div>
-      <button>Logout</button>
+      <button onClick={() => logOut()}>Logout</button>
 
     </div>
   )
