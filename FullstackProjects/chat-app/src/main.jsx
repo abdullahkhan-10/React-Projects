@@ -3,10 +3,14 @@ import App from './App.jsx'
 import './index.css'
 
 import { BrowserRouter } from "react-router-dom"
+import ContextProvider from "./context/AppContext.jsx"
 
 createRoot(document.getElementById('root')).render(
+  
   <BrowserRouter>
-    <App />
+    <ContextProvider>
+      <App />
+    </ContextProvider>
   </BrowserRouter>
  
 )
