@@ -2,7 +2,7 @@ import { getDoc, doc, updateDoc } from 'firebase/firestore'
 import {createContext, useState} from 'react'
 import {db} from "../config/configuration"
 import { useNavigate } from 'react-router-dom'
-// import {auth} from "../config/configuration"
+import {auth} from "../config/configuration"
 
 export const AppContext = createContext()
 
@@ -32,17 +32,16 @@ const ContextProvider = (props) =>{
             lastSeen: Date.now()
         })
 
-        // setInterval( async() => {
-        //     if (auth.chatUser){
-        //         await updateDoc(useRef, {
-        //             lastSeen: Date.now()
-        //         })
-        //     }
-        // }, 60000);
+        setInterval( async() => {
+            if (auth.chatUser){
+                await updateDoc(useRef, {
+                    lastSeen: Date.now()
+                })
+            }
+        }, 60000);
         
         
     }
-
 
     // data inside this object will be accessible to entire app
     const value = {
