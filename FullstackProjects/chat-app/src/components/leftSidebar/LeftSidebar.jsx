@@ -23,11 +23,11 @@ const LeftSidebar = () => {
         setShowSearch(true)
         const userRef = collection(db, "Users")
         const q = query(userRef, where("username", "==", input.toLowerCase()))
-        const querySnap = await getDocs(q)
+        const queryUser = await getDocs(q)
         // console.log(querySnap);
-        if (!querySnap.empty && querySnap.docs[0].data().id !== userData.id) {
+        if (!queryUser.empty && queryUser.docs[0].data().id !== userData.id) {
 
-          setUser(querySnap.docs[0].data())
+          setUser(queryUser.docs[0].data())
         }else{
           setUser(null)
         }
