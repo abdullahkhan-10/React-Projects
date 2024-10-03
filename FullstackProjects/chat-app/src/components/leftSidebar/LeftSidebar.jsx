@@ -18,7 +18,7 @@ const LeftSidebar = () => {
 
   // To search our required user 
   const searchUser = async(e)=>{
-    console.log(chatData);
+    // console.log(chatData);
     
     try {
       const input = e.target.value
@@ -86,6 +86,8 @@ const LeftSidebar = () => {
       console.error(error)
     }
   }
+
+
   return (
     <div className="left-side">
       {/* Top */}
