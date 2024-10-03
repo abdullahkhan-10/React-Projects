@@ -53,9 +53,9 @@ const ContextProvider = (props) =>{
                 for (const item of chatItems) {
                     const userRef = doc(db, "Users", item.id)
                     const userSnap = getDoc(userRef)
-                    const userData = userSnap.data()
+                    const getUserData = userSnap.data()
 
-                    newData.push({...item, userData})
+                    newData.push({...item, getUserData})
                 }
                 setChatData(newData.sort( (a,b) => b.updatedAt - a.updatedAt))
                 // console.log(chatData);
