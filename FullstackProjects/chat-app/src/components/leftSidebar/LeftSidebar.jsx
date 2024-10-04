@@ -36,7 +36,7 @@ const LeftSidebar = () => {
               userExist = true
             }
           })
-          if (!userExist) {
+          if (userExist) {
             setUser(queryUser.docs[0].data())
           }
           
@@ -85,6 +85,9 @@ const LeftSidebar = () => {
       toast.error(error.message)
       console.error(error)
     }
+
+    console.log(chatData);
+    
   }
 
 
