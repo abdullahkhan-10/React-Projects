@@ -44,6 +44,7 @@ const Upload = async (file) => {
           break;
       }
     },
+    
     () => {
       // Upload completed successfully, now we can get the download URL
       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
