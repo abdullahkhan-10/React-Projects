@@ -121,3 +121,34 @@
     text-align: center;
     font-weight: 300;
 }
+
+
+/* result  */
+
+.result{
+    padding: 0 3%;
+    max-height: 70vh;
+    overflow-y: scroll;
+}
+.result::-webkit-scrollbar{
+    display: none;
+}
+
+.result-title{
+    margin: 30px 0px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.result img{
+    width: 40px;
+    border-radius: 50%;
+}
+
+.result-data{
+    display: flex;
+    align-items: start;
+    gap: 20px;
+
+}
