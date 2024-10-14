@@ -7,19 +7,19 @@ const Sidebar = () => {
 
     const [extend, setExtend] = useState(true)
 
-    const {onSent, prevPrompt, setRecentPrompt} = useContext(Context)
+    const {onSent, prevPrompt, setRecentPrompt,newChat} = useContext(Context)
 
     const loadPrompt = async (prompt) =>{
         setRecentPrompt(prompt)
         await onSent(prompt)
     }
-    
+
   return (
     <div className='sidebar'>
         {/* top  */}
         <div className="top">
             <img onClick={ ()=>setExtend(prev => !prev)} src={myAssets.menu_icon} className='menu' />
-            <div className="new-chat">
+            <div onClick={() =>newChat()} className="new-chat">
                 <img src={myAssets.plus_icon}  />
                 {extend ? <p>New Chat</p>: null}
             </div>

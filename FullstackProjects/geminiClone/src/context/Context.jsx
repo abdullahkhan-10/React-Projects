@@ -19,6 +19,11 @@ const ContextProvider = (props) =>{
         }, 75*index);
     }
 
+    // to add new chat
+    const newChat = ()=>{
+        setLoading(false)
+        setShowResult(false)
+    }
 
     // Function to sent the prompt and called the function (run) on which we have hit api.
     const onSent = async(prompt) =>{
@@ -80,7 +85,8 @@ const ContextProvider = (props) =>{
         setPrevPrompt,
         showResult,
         loading,
-        resultData
+        resultData,
+        newChat,
     }
 
     return(
