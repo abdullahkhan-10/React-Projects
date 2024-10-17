@@ -1,10 +1,12 @@
 import Header from "./Sections/Header"
+import Hero from "./Sections/Hero"
 
 const App = () => {
   return (
-    <div className="overflow-hidden">
+    <main className="overflow-hidden">
       <Header/>
-    </div>
+      <Hero/>
+    </main>
   )
 }
 
