@@ -1,12 +1,14 @@
 import {Element, Link as LinkScroll} from "react-scroll"
+import Button from "../components/Button"
 
 const Hero = () => {
   return (
     <section className="relative pt-60 pb-40 max-lg:pt-52 max-lg:pb-36 max-md:pt-36 max-md:pb-32 border-2 border-amber-400">
-        {/* left side  */}
+
         <Element name="hero">
-            <div className="container border border-green-600 ">
-                <div className="relative z-2 max-w-512 max-lg:max-w-386 border border-red-700">
+                  {/* left side  */}
+            <div className="container ">
+                <div className="relative z-2 max-w-512 max-lg:max-w-386 ">
                     <div className="caption small-2 uppercase text-p3 ">
                         Video Editing
                     </div>
@@ -17,11 +19,15 @@ const Hero = () => {
 
                     <p className="max-w-440 mb-14 body-1 max-md:mb-10">We design Xora AI Video Editor to be an easy to use, quick to learn, and surprisingly powerfull</p>
 
-                    <LinkScroll to="features" offset={-100} spy smooth>Text</LinkScroll>
+                    <LinkScroll to="features" offset={-100} spy smooth>
+                      <Button icon="/images/zap.svg">Try it Now</Button>
+                    </LinkScroll>
                 </div>
             </div>
+
+            {/* right side  */}
+           <div>right</div>
         </Element>
-        <div>right</div>
     </section>
   )
 }
