@@ -6,8 +6,8 @@ const Hero = () => {
     <section className="relative pt-60 pb-40 max-lg:pt-52 max-lg:pb-36 max-md:pt-36 max-md:pb-32 border-2 border-amber-400">
 
         <Element name="hero">
-                  {/* left side  */}
             <div className="container ">
+                {/* left side  */}
                 <div className="relative z-2 max-w-512 max-lg:max-w-386 ">
                     <div className="caption small-2 uppercase text-p3 ">
                         Video Editing
@@ -23,10 +23,13 @@ const Hero = () => {
                       <Button icon="/images/zap.svg">Try it Now</Button>
                     </LinkScroll>
                 </div>
-            </div>
 
-            {/* right side  */}
-           <div>right</div>
+                {/* right side  */}
+                <div className="absolute -top-32 left-[calc(50%-340px)] w-[1230px] pointer-events-none">
+                    <img src="/images/hero.png" className="size-1230 max-lg:h-auto" alt="" />
+                </div>
+
+            </div>
         </Element>
     </section>
   )
