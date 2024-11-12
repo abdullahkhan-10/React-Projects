@@ -2,7 +2,7 @@ import Header from './components/Header'
 
 const App = () => {
   return (
-    <div>
+    <div className='w-full'>
       <Header/>
     </div>
   )
