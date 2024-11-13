@@ -1,9 +1,11 @@
+import About from './components/About'
 import Header from './components/Header'
 
 const App = () => {
   return (
-    <div className='w-full'>
+    <div className='w-full overflow-hidden'>
       <Header/>
+      <About/>
     </div>
   )
 }
