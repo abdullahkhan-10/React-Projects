@@ -1,28 +1,59 @@
-// import { useState } from "react"
+import { useEffect, useState } from "react"
 import { myAssets, projectsData } from "../assets/assets"
 
 const Projects = () => {
-  
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [cardsShow, setCardsShow] = useState(1)
+
+  const nextProject = () =>{
+    setCurrentIndex( (prevIndex) =>(prevIndex + 1) % projectsData.length)
+    console.log("next button is pressed");
+    
+  }
+
+  const prevProject = () =>{
+    setCurrentIndex( (prevIndex) => (prevIndex === 0 ? projectsData.length - 1 : prevIndex - 1 ))
+  }
+
+  useEffect( ()=>{
+    const updateCardsToShow = () =>{
+      if(window.innerWidth >= 1024){
+        setCardsShow(projectsData.length)
+      }else{
+        setCardsShow(1)
+      }
+    };
+    updateCardsToShow()
+    console.log("useeffect is mounted")
+
+    // when we resize the screen the function (updateCardsToShow) will execute.
+    window.addEventListener("resize", updateCardsToShow);
+
+    // also we need to the remove the Listener at the end 
+    return () => window.removeEventListener("resize", updateCardsToShow);
+  },[])
 
   return (
-    <section className=" border border-red-600 container mx-auto py-4 pt-10 px-6 md:px-20 lg:px-32 my-10 w-full overflow-hidden" id="Projects">
+    <section className=" container mx-auto py-4 pt-10 px-6 md:px-20 lg:px-32 my-10 w-full overflow-hidden" id="Projects">
         <h1 className="text-2xl sm:text-4xl font-bold mb-2 text-center">Projects <span className="underline underline-offset-4 decoration-2 under font-light">Completed</span></h1>
         <p className="text-center mx-auto text-gray-500 max-w-80 mb-6">Crafting Spaces, Building Legacies, Explore Our portofolio</p>
 
         {/* Slider button  */}
         <div className="flex items-center justify-end mb-8">
-          <button className="bg-gray-200 rounded p-3 mr-2">
+          <button onClick={prevProject} className="bg-gray-200 rounded p-3 mr-2">
             <img src={myAssets.left_arrow} alt="Previous" />
           </button>
 
-          <button className="bg-gray-200 rounded p-3 mr-2">
+          <button onClick={nextProject} className="bg-gray-200 rounded p-3 mr-2">
             <img src={myAssets.right_arrow} alt="Next" />
           </button>
         </div>
 
         {/* projects slider container  */}
         <div className=" overflow-hidden">
-          <div className="flex gap-8 transition-transform duration-500 ease-in-out">
+          <div className="flex gap-8 transition-transform duration-500 ease-in-out" 
+          style={{transform: `translateX(-${(currentIndex * 100) / cardsShow} % )`}}
+          >
             {
               projectsData.map( (project, index) =>(
                 <div key={index} className="relative flex-shrink-0 w-full md:w-1/4">
