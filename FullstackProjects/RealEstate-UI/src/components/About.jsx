@@ -1,8 +1,15 @@
 import { myAssets } from "../assets/assets"
+import { motion } from "motion/react"
+
 
 const About = () => {
   return (
-    <section className="container flex flex-col items-center justify-center mx-auto p-14 md:px-20 lg:px-32 w-full overflow-hidden" id="About">
+    <motion.div
+     initial={{opacity:0, x: 200}}
+     transition={{duration: 1}}
+     whileInView={{opacity:1, x:0}}
+     viewport={{once: true}}
+     className="container flex flex-col items-center justify-center mx-auto p-14 md:px-20 lg:px-32 w-full overflow-hidden" id="About">
 
         <h1 className="text-2xl sm:text-4xl font-bold mb-2">About <span className="underline underline-offset-4 decoration-2 under font-light">Our Brand</span></h1>
         <p className="text-gray-500 max-w-80 text-center mb-6">Passionate About Properties, Dedicated to your Vision</p>
@@ -40,7 +47,7 @@ const About = () => {
             </div>
            
         </div>
-    </section>
+    </motion.div>
   )
 }
 
