@@ -1,6 +1,7 @@
 import Navbar from "./Navbar"
-import { albumsData } from "../assets/assets"
+import { albumsData, songsData } from "../assets/assets"
 import Albums from "./Albums"
+import Songs from "./Songs"
 
 const Home = () => {
   return (
@@ -20,7 +21,17 @@ const Home = () => {
       </div>
 
       {/* songs data  */}
-      
+      <div className="mb-4">
+        <h1 className="my-4 font-bold text-2xl">Today Biggest hits</h1>
+        <div className="flex overflow-auto">
+          {
+            songsData.map( (song, index) =>(
+              <Songs key={index} name={song.name} image={song.image} desc={song.desc} id={song.id}/>
+            ))
+          }
+        </div>
+      </div>
+
     </>
   )
 }
