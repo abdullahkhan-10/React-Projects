@@ -9,7 +9,7 @@ const PlayerContextProvider = (props) =>{
     const seekBg = useRef()
     const seekBar = useRef()
 
-    const[track, setTrack] = useState(songsData[1])
+    const[track, setTrack] = useState(songsData[0])
     const[playStatus, setPlayStatus] = useState(false)
     const[time, setTime] = useState({
         currentTime: {
@@ -34,8 +34,8 @@ const PlayerContextProvider = (props) =>{
                     minute: Math.floor(audioRef.current.currentTime / 60),
                 },
                 totalTime: {
-                    second: Math.floor(audioRef.current.currentTime % 60),
-                    minute: Math.floor(audioRef.current.currentTime / 60),
+                    second: Math.floor(audioRef.current.duration % 60),
+                    minute: Math.floor(audioRef.current.duration / 60),
                 }
             })
            }
@@ -52,6 +52,15 @@ const PlayerContextProvider = (props) =>{
         setPlayStatus(false)
     }
 
+    // When click on any song and it play.
+    const playWithId = async(id)=>{
+        await setTrack(songsData[id])
+        await audioRef.current.play()
+        setPlayStatus(true)
+        // console.log("song dive is clicked", id);
+        
+    }
+
 
     const contextValue = {
         audioRef,
@@ -61,6 +70,7 @@ const PlayerContextProvider = (props) =>{
         playStatus, setPlayStatus,
         time, setTime,
         play, pause,
+        playWithId,
     }
 
     return (
