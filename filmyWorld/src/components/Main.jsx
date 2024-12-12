@@ -1,5 +1,6 @@
 import { useState } from "react"
 import myAssets from "../assets/asset"
+import ReactStars from 'react-stars'
 
 const Main = () => {
 
@@ -7,25 +8,25 @@ const Main = () => {
     {
       name: "Fast and Furious",
       year: 2010,
-      rating: 5,
+      rating: 4,
       img: `${myAssets.fastAndFurious}`
     },
     {
       name: "Fast and Furious",
       year: 2010,
-      rating: 5,
+      rating: 3.5,
       img: `${myAssets.fastAndFurious}`
     },
     {
       name: "Fast and Furious",
       year: 2010,
-      rating: 5,
+      rating: 1,
       img: `${myAssets.fastAndFurious}`
     },
     {
       name: "Fast and Furious",
       year: 2010,
-      rating: 5,
+      rating: 2,
       img: `${myAssets.fastAndFurious}`
     },
     {
@@ -66,7 +67,17 @@ const Main = () => {
               
               <h1> <span className="text-gray-400">Name: </span> {element.name}</h1>
 
-              <h1> <span className="text-gray-400">Rating: </span> {element.rating}</h1>
+              <h1 className="flex items-center">
+                <span className="text-gray-400 mr-1">Rating: </span> 
+                {/* rating stars package added */}
+                <ReactStars
+                  size={20}
+                  half={true}
+                  value={element.rating}
+                  edit={false}
+                  />
+              </h1>
+
               <h1> <span className="text-gray-400">Year: </span> {element.year}</h1>
             </div>
           ))
