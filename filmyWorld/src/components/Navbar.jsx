@@ -2,15 +2,15 @@ import myAssets from "../assets/asset"
 
 const Navbar = () => {
   return (
-    <div className="container mx-auto ">
-        <div className="flex items-center justify-between p-6">
+    <div className=" sticky z-10 top-0 bg-gray-500 ">
+        <div className="flex items-center justify-between container mx-auto p-6">
             <a className="text-3xl font-bold" href="/">Filmy <span className="text-red-500">World</span></a>
 
-            <div className="flex gap-8 text-gray-300">
-                <a href="Home">Home</a>
-                <a href="Home">Browse Movie</a>
-                <a href="Home">News</a>
-                <a href="Home">Contact us</a>
+            <div className="flex gap-8 ">
+                <a className="text-red-500 text-[17px] hover:text-red-500" href="Home">Home</a>
+                <a className="text-white text-[17px] hover:text-red-500" href="Home">Browse Movie</a>
+                <a className="text-white text-[17px] hover:text-red-500" href="Home">News</a>
+                <a className="text-white text-[17px] hover:text-red-500" href="Home">Contact us</a>
             </div>
 
             <div className="flex items-center gap-8">

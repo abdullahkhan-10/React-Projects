@@ -5,7 +5,7 @@ import AddMovie from "./components/AddMovie"
 
 const App = () => {
   return (
-    <div>
+    <div className="app relative">
       <Navbar/>
       <Routes>
         <Route path="/" element={<Main/>}/>

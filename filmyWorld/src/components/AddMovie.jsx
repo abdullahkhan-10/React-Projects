@@ -1,5 +1,8 @@
 import { useState } from "react"
 import {TailSpin} from "react-loader-spinner"
+import { addDoc } from "firebase/firestore"
+import { moviesRef } from "../Firebase/firebase"
+import swal from "sweetalert"
 
 const AddMovie = () => {
 
@@ -11,6 +14,30 @@ const AddMovie = () => {
     })
 
     const [loading, setLoading] = useState(false)
+
+    const addNewMovie = async() =>{
+        setLoading(true)
+        try {
+            await addDoc(moviesRef, form)
+            swal({
+                title: "Successfully Added",
+                icon: "success",
+                buttons: "false",
+                timer: 3000
+            })
+            
+        } catch (error) {
+            swal({
+                title: error,
+                icon: "error",
+                buttons: false,
+                timer: 3000
+            })            
+        }
+        setLoading(false)
+        console.log("movie not added");
+        
+    }
 
   return (
     <div className="flex items-center justify-center mt-8">
@@ -43,11 +70,12 @@ const AddMovie = () => {
             </div>
 
             <div className="flex flex-col w-full px-2 py-4 gap-1">
-                <label htmlFor="img">Image</label>
+                <label htmlFor="img">Image Link</label>
                 <input
                  className="rounded-md border-none outline-none focus:border-gray-500 text-black p-2"
+                 type="text"
                  name="img"
-                 value={form.description}
+                 value={form.image}
                  onChange={ (e) =>setForm({...form, image: e.target.value})}
                 />
             </div>
@@ -64,7 +92,7 @@ const AddMovie = () => {
                 ></textarea>
             </div>
 
-            <button className="flex mx-auto bg-red-500 border-0 py-2 px-8 hover:bg-red-700 rounded-md text-lg"> { loading ? <TailSpin height={25} color="white"/> : "Submit"}</button>
+            <button onClick={addNewMovie} className="flex mx-auto bg-red-500 border-0 py-2 px-8 hover:bg-red-700 rounded-md text-lg"> { loading ? <TailSpin height={25} color="white"/> : "Submit"}</button>
         </form>
     </div>
   )
