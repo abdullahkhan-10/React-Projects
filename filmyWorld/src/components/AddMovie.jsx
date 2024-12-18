@@ -1,4 +1,5 @@
 import { useState } from "react"
+import {TailSpin} from "react-loader-spinner"
 
 const AddMovie = () => {
 
@@ -6,7 +7,11 @@ const AddMovie = () => {
         title: "",
         year: "",
         description: "",
+        image: ""
     })
+
+    const [loading, setLoading] = useState(false)
+
   return (
     <div className="flex items-center justify-center mt-8">
         <form action="" className=" p-4">
@@ -38,6 +43,16 @@ const AddMovie = () => {
             </div>
 
             <div className="flex flex-col w-full px-2 py-4 gap-1">
+                <label htmlFor="img">Image</label>
+                <input
+                 className="rounded-md border-none outline-none focus:border-gray-500 text-black p-2"
+                 name="img"
+                 value={form.description}
+                 onChange={ (e) =>setForm({...form, image: e.target.value})}
+                />
+            </div>
+
+            <div className="flex flex-col w-full px-2 py-2 gap-1">
                 <label htmlFor="area">Description</label>
                 <textarea
                  className="rounded-md border-none outline-none focus:border-gray-500 text-black p-1"
@@ -49,7 +64,7 @@ const AddMovie = () => {
                 ></textarea>
             </div>
 
-            <button className="flex mx-auto bg-red-500 border-0 py-2 px-8 hover:bg-red-700 rounded-md text-lg">Submit</button>
+            <button className="flex mx-auto bg-red-500 border-0 py-2 px-8 hover:bg-red-700 rounded-md text-lg"> { loading ? <TailSpin height={25} color="white"/> : "Submit"}</button>
         </form>
     </div>
   )
