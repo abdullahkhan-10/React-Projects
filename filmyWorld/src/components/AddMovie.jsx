@@ -15,7 +15,10 @@ const AddMovie = () => {
 
     const [loading, setLoading] = useState(false)
 
-    const addNewMovie = async() =>{
+    const addNewMovie = async(e) =>{
+        e.preventDefault()
+        // console.log(form);
+        
         setLoading(true)
         try {
             await addDoc(moviesRef, form)
@@ -25,6 +28,7 @@ const AddMovie = () => {
                 buttons: "false",
                 timer: 3000
             })
+            // console.log("movie added");
             
         } catch (error) {
             swal({
@@ -33,9 +37,9 @@ const AddMovie = () => {
                 buttons: false,
                 timer: 3000
             })            
+            // console.log("movie not added");
         }
         setLoading(false)
-        console.log("movie not added");
         
     }
 
