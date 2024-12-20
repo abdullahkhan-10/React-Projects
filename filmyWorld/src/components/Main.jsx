@@ -1,6 +1,9 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import myAssets from "../assets/asset"
 import ReactStars from 'react-stars'
+import { ThreeDots } from  "react-loader-spinner"
+import { getDocs } from "firebase/firestore"
+import { moviesRef } from "../Firebase/firebase"
 
 const Main = () => {
 
@@ -11,38 +14,23 @@ const Main = () => {
       rating: 4,
       img: `${myAssets.fastAndFurious}`
     },
-    {
-      name: "Fast and Furious",
-      year: 2010,
-      rating: 3.5,
-      img: `${myAssets.fastAndFurious}`
-    },
-    {
-      name: "Fast and Furious",
-      year: 2010,
-      rating: 1,
-      img: `${myAssets.fastAndFurious}`
-    },
-    {
-      name: "Fast and Furious",
-      year: 2010,
-      rating: 2,
-      img: `${myAssets.fastAndFurious}`
-    },
-    {
-      name: "Fast and Furious",
-      year: 2010,
-      rating: 5,
-      img: `${myAssets.fastAndFurious}`
-    },
-    {
-      name: "Fast and Furious",
-      year: 2010,
-      rating: 5,
-      img: `${myAssets.fastAndFurious}`
-    },
-    
   ])
+  const [loading, setLoading] = useState(false)
+
+  // to get the data from firestore database and display on web when the component get rendered.
+  // we will use useEffect 
+  useEffect( () =>{
+    async function getData(){
+      setLoading(true)
+      const mydata = await getDocs(moviesRef)
+      // console.log(mydata);
+      
+
+      setLoading(false)
+    }
+    getData();
+  },[])
+
   return (
     <div className="mt-16">
       {/* top  */}
@@ -60,7 +48,7 @@ const Main = () => {
 
       {/* bottom  */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mx-2 my-4">
-        {
+        { loading ? <div className="w-full flex justify-center items-center mx-[500px] h-96"><ThreeDots height={40} color="white"/></div> :
           data.map( (element, index) =>(
             <div key={index} className="bg-gray-800 p-2 font-medium shadow-lg cursor-pointer rounded-md hover:translate-y-2 transition-all duration-500">
               <img src={element.img} className="w-full md:h-72 rounded-md" alt="" />
@@ -73,7 +61,7 @@ const Main = () => {
                 <ReactStars
                   size={20}
                   half={true}
-                  value={element.rating}
+                  value={5}
                   edit={false}
                   />
               </h1>
