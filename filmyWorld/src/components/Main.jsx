@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import myAssets from "../assets/asset"
+// import myAssets from "../assets/asset"
 import ReactStars from 'react-stars'
 import { ThreeDots } from  "react-loader-spinner"
 import { getDocs } from "firebase/firestore"
@@ -7,14 +7,7 @@ import { moviesRef } from "../Firebase/firebase"
 
 const Main = () => {
 
-  const [data, setData] = useState([
-    {
-      name: "Fast and Furious",
-      year: 2010,
-      rating: 4,
-      img: `${myAssets.fastAndFurious}`
-    },
-  ])
+  const [data, setData] = useState([])
   const [loading, setLoading] = useState(false)
 
   // to get the data from firestore database and display on web when the component get rendered.
@@ -24,7 +17,9 @@ const Main = () => {
       setLoading(true)
       const mydata = await getDocs(moviesRef)
       // console.log(mydata);
-      
+      mydata.forEach( (doc) =>{
+        setData( (prev) => [...prev, doc.data()])
+      })
 
       setLoading(false)
     }
@@ -51,9 +46,9 @@ const Main = () => {
         { loading ? <div className="w-full flex justify-center items-center mx-[500px] h-96"><ThreeDots height={40} color="white"/></div> :
           data.map( (element, index) =>(
             <div key={index} className="bg-gray-800 p-2 font-medium shadow-lg cursor-pointer rounded-md hover:translate-y-2 transition-all duration-500">
-              <img src={element.img} className="w-full md:h-72 rounded-md" alt="" />
+              <img src={element.image} className="w-full md:h-72 rounded-md" alt="" />
               
-              <h1> <span className="text-gray-400">Name: </span> {element.name}</h1>
+              <h1> <span className="text-gray-400">Name: </span> {element.title}</h1>
 
               <h1 className="flex items-center">
                 <span className="text-gray-400 mr-1">Rating: </span> 
