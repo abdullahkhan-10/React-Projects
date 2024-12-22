@@ -17,11 +17,12 @@ const Main = () => {
       setLoading(true)
       const mydata = await getDocs(moviesRef)
       // console.log(mydata);
+      
       mydata.forEach( (doc) =>{
-        setData( (prev) => [...prev, doc.data()])
+        setData( (prev) => [...prev, {...(doc.data()), id: doc.id}])
       })
 
-      setLoading(false)
+      setLoading(false)      
     }
     getData();
   },[])

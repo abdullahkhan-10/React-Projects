@@ -1,10 +1,11 @@
 import myAssets from "../assets/asset"
+import {Link} from "react-router-dom"
 
 const Navbar = () => {
   return (
     <div className=" sticky z-10 top-0 bg-gray-500 ">
         <div className="flex items-center justify-between container mx-auto p-6">
-            <a className="text-3xl font-bold" href="/">Filmy <span className="text-red-500">World</span></a>
+            <Link to={"/"}><a className="text-3xl font-bold" href="/">Filmy <span className="text-red-500">World</span></a></Link>
 
             <div className="flex gap-8 ">
                 <a className="text-red-500 text-[17px] hover:text-red-500" href="Home">Home</a>
@@ -19,7 +20,7 @@ const Navbar = () => {
                     <img src={myAssets.searchIcon} className="w-4 cursor-pointer" alt="" />
                 </div>
 
-                <button>Log in</button>
+                <Link to={"/add-movie"}><button>Add Movie</button></Link>
             </div>
         </div>
     </div>
