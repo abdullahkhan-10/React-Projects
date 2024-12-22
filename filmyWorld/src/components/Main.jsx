@@ -4,6 +4,7 @@ import ReactStars from 'react-stars'
 import { ThreeDots } from  "react-loader-spinner"
 import { getDocs } from "firebase/firestore"
 import { moviesRef } from "../Firebase/firebase"
+import { Link } from "react-router-dom"
 
 const Main = () => {
 
@@ -46,24 +47,26 @@ const Main = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 mx-2 my-4">
         { loading ? <div className="w-full flex justify-center items-center mx-[500px] h-96"><ThreeDots height={40} color="white"/></div> :
           data.map( (element, index) =>(
-            <div key={index} className="bg-gray-800 p-2 font-medium shadow-lg cursor-pointer rounded-md hover:translate-y-2 transition-all duration-500">
-              <img src={element.image} className="w-full md:h-72 rounded-md" alt="" />
-              
-              <h1> <span className="text-gray-400">Name: </span> {element.title}</h1>
+            <Link to={`/details/${element.id}`} key={index}>
+              <div className="bg-gray-800 p-2 font-medium shadow-lg cursor-pointer rounded-md hover:translate-y-2 transition-all duration-500">
+                <img src={element.image} className="w-full md:h-72 rounded-md" alt="" />
+                
+                <h1> <span className="text-gray-400">Name: </span> {element.title}</h1>
 
-              <h1 className="flex items-center">
-                <span className="text-gray-400 mr-1">Rating: </span> 
-                {/* rating stars package added */}
-                <ReactStars
-                  size={20}
-                  half={true}
-                  value={5}
-                  edit={false}
-                  />
-              </h1>
+                <h1 className="flex items-center">
+                  <span className="text-gray-400 mr-1">Rating: </span> 
+                  {/* rating stars package added */}
+                  <ReactStars
+                    size={20}
+                    half={true}
+                    value={5}
+                    edit={false}
+                    />
+                </h1>
 
-              <h1> <span className="text-gray-400">Year: </span> {element.year}</h1>
-            </div>
+                <h1> <span className="text-gray-400">Year: </span> {element.year}</h1>
+              </div>
+            </Link>
           ))
         }
       </div>

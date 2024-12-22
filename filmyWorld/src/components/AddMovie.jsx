@@ -30,6 +30,14 @@ const AddMovie = () => {
             })
             // console.log("movie added");
             
+            // empty the form when the data is sent 
+            setForm({
+                title: "",
+                year: "",
+                description: "",
+                image: ""
+            })
+            
         } catch (error) {
             swal({
                 title: error,
