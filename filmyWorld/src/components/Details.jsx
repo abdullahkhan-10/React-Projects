@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import { doc, getDoc } from "firebase/firestore"
 import { db} from "../Firebase/firebase"
 import { ThreeCircles } from "react-loader-spinner"
+import Reviews from "./Reviews"
 
 const Details = () => {
     const {id} = useParams()
@@ -47,6 +48,8 @@ const Details = () => {
                         />
                 
                         <p className="mt-3"> {movieDetails.description}</p>
+
+                        <Reviews id={id}/>
                     </div> 
                 </>
         }
