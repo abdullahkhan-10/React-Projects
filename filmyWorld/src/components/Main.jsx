@@ -29,7 +29,7 @@ const Main = () => {
   },[])
 
   return (
-    <div className="mt-16">
+    <div className="mt-16 pb-12">
       {/* top  */}
       <div className="flex items-center justify-center flex-col mx-28">
         <h1 className="text-3xl font-bold my-4">Filmy world Premium Movies</h1>

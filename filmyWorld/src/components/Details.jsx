@@ -22,6 +22,7 @@ const Details = () => {
     useEffect( () =>{
         async function getMovieDetails(){
             setLoading(true)
+            // get the data from firbase and display on Details component 
             const docRef = doc(db, "movies", id)
             const details = await getDoc(docRef)
 

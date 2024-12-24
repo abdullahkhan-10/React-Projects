@@ -7,8 +7,8 @@ import swal from "sweetalert"
 
 const Reviews = ({id, prevRating, userRated }) => {
     const [rating, setRating] = useState(0)
-    const [loading, setLoading] = useState(false)
     const [input, setInput] = useState("")
+    const [loading, setLoading] = useState(false)
 
     const sentReview = async() => {
         setLoading(true)
@@ -20,7 +20,8 @@ const Reviews = ({id, prevRating, userRated }) => {
                 thought: input,
                 timestamp: new Date().getTime()
             })
-
+            
+            // to update the rating and userRated in moviw collection 
             const ref = doc(db, "movies", id)
             await updateDoc(ref, {
                 rating: prevRating + rating,
