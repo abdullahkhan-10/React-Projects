@@ -59,7 +59,7 @@ const Main = () => {
                   <ReactStars
                     size={20}
                     half={true}
-                    value={5}
+                    value={element.rating / element.rated}
                     edit={false}
                     />
                 </h1>

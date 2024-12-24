@@ -1,11 +1,11 @@
 import { useState } from "react"
 import ReactStars from "react-stars"
-import { reviewsRef } from "../Firebase/firebase"
-import { addDoc } from "firebase/firestore"
+import { reviewsRef, db } from "../Firebase/firebase"
+import { addDoc, updateDoc, doc } from "firebase/firestore"
 import { TailSpin } from "react-loader-spinner"
 import swal from "sweetalert"
 
-const Reviews = ({id}) => {
+const Reviews = ({id, prevRating, userRated }) => {
     const [rating, setRating] = useState(0)
     const [loading, setLoading] = useState(false)
     const [input, setInput] = useState("")
@@ -20,9 +20,15 @@ const Reviews = ({id}) => {
                 thought: input,
                 timestamp: new Date().getTime()
             })
+
+            const ref = doc(db, "movies", id)
+            await updateDoc(ref, {
+                rating: prevRating + rating,
+                rated: userRated + 1
+            })
             setRating(0)
             setInput("")
-            
+
             swal({
                 title: "Review Sent",
                 icon: "success",

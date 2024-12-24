@@ -13,7 +13,9 @@ const Details = () => {
         title: "",
         year: "",
         image: "",
-        description: ""
+        description: "",
+        rating: 0, 
+        rated: 0
     })
     const [loading, setLoading] = useState(false)
 
@@ -43,13 +45,13 @@ const Details = () => {
                         <ReactStars
                             size={20}
                             half={true}
-                            value={4.5}
+                            value={movieDetails.rating/movieDetails.rated}
                             edit={false}
                         />
                 
                         <p className="mt-3"> {movieDetails.description}</p>
 
-                        <Reviews id={id}/>
+                        <Reviews id={id} prevRating={movieDetails.rating} userRated={movieDetails.rated}/>
                     </div> 
                 </>
         }
