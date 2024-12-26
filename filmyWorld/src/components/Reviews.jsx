@@ -57,7 +57,8 @@ const Reviews = ({id, prevRating, userRated }) => {
             setReviewLoading(true)
             let quer = query(reviewsRef, where("movieId", '==', id))
             const querySnap = await getDocs(quer)
-
+            // console.log(querySnap);
+            
             querySnap.forEach( (review) =>{
                 setReviewDetails( (prev) =>[...prev, review.data()])
             })
@@ -90,27 +91,27 @@ const Reviews = ({id, prevRating, userRated }) => {
             reviewLoading
              ? <div className="mt-10 flex justify-center"><ThreeDots height={10} color="white"/></div>
              : 
-            <div className="mt-4">
-                   {
-                    reviewDetails.map( (e, i) =>(
-                        <div key={i} className="w-full p-2 mt-2 border-b border-gray-600">
-                            <div className="flex items-center">
-                                <p className="text-blue-500 text-xl">{e.name}</p>
-                                <p className="ml-4 text-[12px]">{new Date(e.timestamp).toLocaleString()}</p>
+                <div className="mt-4">
+                    {
+                        reviewDetails.map( (e, i) =>(
+                            <div key={i} className="w-full p-2 mt-2 border-b border-gray-600">
+                                <div className="flex items-center">
+                                    <p className="text-blue-500 text-xl">{e.name}</p>
+                                    <p className="ml-4 text-[12px]">{new Date(e.timestamp).toLocaleString()}</p>
+                                </div>
+
+                                <ReactStars
+                                    size={15}
+                                    half={true}
+                                    value={e.rating}
+                                    edit={false}
+                                />
+
+                                <p>{e.thought}</p>
                             </div>
-
-                            <ReactStars
-                             size={15}
-                             half={true}
-                             value={e.rating}
-                             edit={false}
-                            />
-
-                            <p>{e.thought}</p>
-                        </div>
-                    ))
-                   }
-            </div>
+                        ))
+                    }
+                </div>
         }
     </div>
   )
