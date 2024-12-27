@@ -1,7 +1,11 @@
 import myAssets from "../assets/asset"
 import {Link} from "react-router-dom"
+import { appState } from "../App"
+import { useContext } from "react"
 
 const Navbar = () => {
+    const useAppState = useContext(appState)
+
   return (
     <div className=" sticky z-10 top-0 bg-gray-500 ">
         <div className="flex items-center justify-between container mx-auto p-6">
@@ -20,7 +24,11 @@ const Navbar = () => {
                     <img src={myAssets.searchIcon} className="w-4 cursor-pointer" alt="" />
                 </div>
 
-                <Link to={"/add-movie"}><button>Add Movie</button></Link>
+                {
+                    useAppState.login
+                    ? <Link to={"/add-movie"}><button>Add Movie</button></Link>
+                    : <Link to={"/login"}><button>Login</button></Link>
+                }
             </div>
         </div>
     </div>
