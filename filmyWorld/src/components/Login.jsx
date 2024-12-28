@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({
-    mobile: "",
+    email: "",
     password: ""
   })
   return (
@@ -13,13 +13,13 @@ const Login = () => {
       <h1 className="text-3xl text-center">Login</h1>
 
       <div className="p-2 my-2 w-1/2 md:w-1/3">
-        <label htmlFor="mobile">Mobile No.</label>
+        <label htmlFor="email">Email</label>
         <input
           className="p-2 rounded-md w-full border-none outline-none text-black"
-          type={"number"}
-          name="mobile"
-           value={form.mobile}
-           onChange={ (e) =>setForm({...form, mobile: e.target.value})}
+          type={"email"}
+          name="email"
+           value={form.email}
+           onChange={ (e) =>setForm({...form, email: e.target.value})}
         />
       </div>
 
