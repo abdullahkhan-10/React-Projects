@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { TailSpin } from "react-loader-spinner";
 import { Link } from "react-router-dom";
-// import {getAuth, signInWithEmailAndPassword} from "firebase/auth"
+import {getAuth, createUserWithEmailAndPassword } from "firebase/auth"
 import app from "../Firebase/firebase";
-// import swal from "sweetalert"
+import swal from "sweetalert"
+import { usersRef } from "../Firebase/firebase";
+import { addDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
-// const auth = getAuth(app)
 
 const Signup = () => {
   const [loading, setLoading] = useState(false);
@@ -14,6 +16,42 @@ const Signup = () => {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate()
+
+  const signupUser = (e)=>{
+    e.preventDefault()
+
+    setLoading(true)
+    const auth = getAuth(app)
+
+    createUserWithEmailAndPassword(auth, form.email, form.password)
+    .then( (userDetails) =>{
+      console.log(`User sign up ${userDetails.user}`);
+      
+      // To add data to firbease firestore database.
+      uploadData()
+      setLoading(false)
+      swal({
+        text: "Successfuly Registered",
+        icon: "success",
+        buttons: false,
+        timer: 3000
+      })
+      navigate("/login")
+    })
+    .catch( (error) =>{
+      window.alert(`An Error occured ${error}`)
+    })
+  }
+
+  const uploadData = async() =>{
+    await addDoc(usersRef, {
+      name: form.name,
+      email: form.email,
+      password: form.password
+    })
+  }
 
   return (
     <div className="flex flex-col items-center mt-20 w-full">
@@ -52,7 +90,7 @@ const Signup = () => {
         />
       </div>
 
-      <button className="flex mx-auto bg-red-500 border-0 py-2 px-8 hover:bg-red-700 rounded-md text-lg my-2">
+      <button onClick={signupUser} className="flex mx-auto bg-red-500 border-0 py-2 px-8 hover:bg-red-700 rounded-md text-lg my-2">
         {loading ? <TailSpin height={20} color="white" /> : "Sign up"}
       </button>
 
