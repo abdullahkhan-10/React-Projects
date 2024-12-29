@@ -27,7 +27,7 @@ const Signup = () => {
 
     createUserWithEmailAndPassword(auth, form.email, form.password)
     .then( (userDetails) =>{
-      console.log(`User sign up ${userDetails.user}`);
+      // console.log(`User sign up ${userDetails.user}`);
       
       // To add data to firbease firestore database.
       uploadData()
