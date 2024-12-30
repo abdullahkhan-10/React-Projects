@@ -1,9 +1,11 @@
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import ReactStars from "react-stars"
 import { reviewsRef, db } from "../Firebase/firebase"
 import { addDoc, updateDoc, doc, query, where, getDocs } from "firebase/firestore"
 import { TailSpin, ThreeDots } from "react-loader-spinner"
 import swal from "sweetalert"
+import {appState} from "../App"
+import { useNavigate } from "react-router-dom"
 
 const Reviews = ({id, prevRating, userRated }) => {
     const [rating, setRating] = useState(0)
@@ -13,33 +15,44 @@ const Reviews = ({id, prevRating, userRated }) => {
     const [reviewDetails, setReviewDetails] = useState([])
     const [reviewLoading, setReviewLoading] = useState(false)
 
+    const useAppState = useContext(appState)
+    const navigate = useNavigate()
+    // to Load review instantly 
+    const [newReviewAdded, setNewReviewAdded] = useState(0)
+
     // To send review to firebase database
     const sentReview = async() => {
         setLoading(true)
         try {
-            await addDoc(reviewsRef, {
-                movieId: id,
-                name: "Abdullah khan",
-                rating: rating,
-                thought: input,
-                timestamp: new Date().getTime()
-            })
+            if (useAppState.login) {
+                await addDoc(reviewsRef, {
+                    movieId: id,
+                    name: useAppState.userName,
+                    rating: rating,
+                    thought: input,
+                    timestamp: new Date().getTime()
+                })
+                
+                // to update the rating and userRated in movie collection 
+                const ref = doc(db, "movies", id)
+                await updateDoc(ref, {
+                    rating: prevRating + rating,
+                    rated: userRated + 1
+                })
+                setRating(0)
+                setInput("")
+                setNewReviewAdded(newReviewAdded + 1)
+    
+                swal({
+                    title: "Review Sent",
+                    icon: "success",
+                    button: false,
+                    time: 3000
+                })
+            }else {
+                navigate("/login")
+            }
             
-            // to update the rating and userRated in moviw collection 
-            const ref = doc(db, "movies", id)
-            await updateDoc(ref, {
-                rating: prevRating + rating,
-                rated: userRated + 1
-            })
-            setRating(0)
-            setInput("")
-
-            swal({
-                title: "Review Sent",
-                icon: "success",
-                button: false,
-                time: 3000
-            })
         } catch (error) {
             swal({
                 title: error.message,
@@ -66,7 +79,7 @@ const Reviews = ({id, prevRating, userRated }) => {
             setReviewLoading(false)
         }
         getReviewsData()
-    }, [])
+    }, [newReviewAdded])
 
   return (
     <div className="mt-2 py-2 w-full border-t-2 border-gray-600">
