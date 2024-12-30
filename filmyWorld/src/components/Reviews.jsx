@@ -68,6 +68,7 @@ const Reviews = ({id, prevRating, userRated }) => {
     useEffect( () =>{
         async function getReviewsData() {
             setReviewLoading(true)
+            setReviewDetails([])                // to avoid repetition of reviews 
             let quer = query(reviewsRef, where("movieId", '==', id))
             const querySnap = await getDocs(quer)
             // console.log(querySnap);
