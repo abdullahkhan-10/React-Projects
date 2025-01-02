@@ -1,1 +1,0 @@
-Fitness website "Evogym" Project initiated with Typescript and framer motion.
